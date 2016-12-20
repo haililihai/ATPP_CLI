@@ -1,0 +1,1 @@
+/DATA/233/hli/Data/chengdu /DATA/233/hli/Data/chengdu/sub_CD_2.txt /DATA/233/hli/test/V1_parcellation V1 3 
