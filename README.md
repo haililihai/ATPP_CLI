@@ -6,6 +6,7 @@
         |____| |____||_____|  |_____|  |_____|
 
 ## ATPP command line version
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.239702.svg)](https://doi.org/10.5281/zenodo.239702)
 
 ATPP (Automatic Tractography-based Parcellation Pipeline)
 
