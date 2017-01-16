@@ -25,7 +25,7 @@ function postprocess_mpm(PWD,ROI,SUB,MAX_CL_NUM,MPM_THRES,VOX_SIZE,LorR)
     path = strcat(PWD,'/MPM_',num2str(length(SUB)),'_',num2str(VOX_SIZE),'mm/');
     
     for CL_NUM=2:MAX_CL_NUM
-        %if ~exist(strcat(num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_MPM_thr',num2str(MPM_THRES),'_group_smoothed.nii.gz'))
+        %if ~exist(strcat(num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_MPM_thr',num2str(MPM_THRES),'_group_smoothed.nii.gz'),'file')
             filename = strcat(num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_MPM_thr',num2str(MPM_THRES),'_group.nii.gz');
 
             info = load_untouch_nii(strcat(path,filename));

@@ -40,7 +40,7 @@ ROISIZE = length(roiindex);
 
 
 for CL_NUM=2:MAX_CL_NUM
-	%if ~exist(strcat(grouproipath,num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_',num2str(GROUP_THRES_REAL*100),'_group.nii'))
+	%if ~exist(strcat(grouproipath,num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_',num2str(GROUP_THRES_REAL*100),'_group.nii'),'file')
     	disp(strcat(ROI,'_',LR,' cluster number_',num2str(CL_NUM),' is running...'));
 	    groupmatrix = zeros(ROISIZE,ROISIZE);
 	    for j = 1:length(SUB)

@@ -56,7 +56,7 @@ if ~exist(probpath,'dir')
 end
 
 parfor CL_NUM=2:MAX_CL_NUM
-    %if ~exist(strcat(probpath,num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_MPM_thr',num2str(MPM_THRES*100),'_group.nii'))
+    %if ~exist(strcat(probpath,num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_MPM_thr',num2str(MPM_THRES*100),'_group.nii'),'file')
     prob_cluster=zeros([IMGSIZE,CL_NUM]);
     sumimg = zeros(IMGSIZE);
 

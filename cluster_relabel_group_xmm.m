@@ -59,7 +59,7 @@ parfor CL_NUM=2:MAX_CL_NUM
     sub_num=length(SUB);
 
     for i=1:sub_num
-        %if ~exist(strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_',LR,'_',METHOD,'/',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_MNI_relabel_group.nii.gz'))
+        %if ~exist(strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_',LR,'_',METHOD,'/',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_MNI_relabel_group.nii.gz'),'file')
             vnii=load_untouch_nii(strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_',LR,'_',METHOD,'/',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_MNI.nii.gz')); 
             tha_seg_result= vnii.img;   
             tmp_overlay=zeros(CL_NUM,CL_NUM);

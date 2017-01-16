@@ -80,7 +80,7 @@ con_matrix = con_matrix(:,d>0);
 fprintf('Full matrix ...\n');
 con_matrix = full(con_matrix);
 
-if ~exist(outfolder) mkdir(outfolder);end;
+if ~exist(outfolder,'dir') mkdir(outfolder);end;
 
 
 fprintf('Create connection_matrix...\n');

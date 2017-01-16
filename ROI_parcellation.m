@@ -28,7 +28,7 @@ parfor i = 1:length(SUB);
 	
 if LEFT == 1
     outdir_L = strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_L','_',method);
-    if ~exist(outdir_L) mkdir(outdir_L); end
+    if ~exist(outdir_L,'dir') mkdir(outdir_L); end
     data = load(strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_L_matrix/connection_matrix.mat')); 
     coordinates = data.xyz;
     matrix = data.matrix;
@@ -44,9 +44,9 @@ if LEFT == 1
     image_f=nii.img;
 
 	for k=1:N
-		display(strcat(SUB{i},'_',ROI,'_L_',num2str(k+1),' processing...'));
         filename=strcat(outdir_L,'/',ROI,'_L_',num2str(k+1),'.nii');
-		if ~exist(filename)
+		if ~exist(filename,'file')
+		    display(strcat(SUB{i},'_',ROI,'_L_',num2str(k+1),' processing...'));
 			index=sc3(k+1,matrix1);   
 			image_f(:,:,:)=0;
 			for j = 1:length(coordinates)
@@ -56,12 +56,12 @@ if LEFT == 1
 			save_untouch_nii(nii,filename);
 		end
     end
-	disp(strcat(SUB{i},'_',ROI,'_L',' Done!'));
+	display(strcat(SUB{i},'_',ROI,'_L',' Done!'));
 end
 
 if RIGHT == 1
 	outdir_R = strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_R','_',method);
-    if ~exist(outdir_R)  mkdir(outdir_R); end
+    if ~exist(outdir_R,'dir')  mkdir(outdir_R); end
     data = load(strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_R_matrix/connection_matrix.mat')); 
     coordinates = data.xyz;
     matrix = data.matrix;
@@ -77,9 +77,9 @@ if RIGHT == 1
     image_f=nii.img;
     
 	for k=1:N
-		display(strcat(SUB{i},'_',ROI,'_R_',num2str(k+1),' processing...'));
         filename=strcat(outdir_R,'/',ROI,'_R_',num2str(k+1),'.nii');
-		if ~exist(filename)
+		if ~exist(filename,'file')
+		    display(strcat(SUB{i},'_',ROI,'_R_',num2str(k+1),' processing...'));
 			index=sc3(k+1,matrix1);
 			image_f(:,:,:)=0;
 			for j = 1:length(coordinates)
@@ -90,7 +90,7 @@ if RIGHT == 1
 		end
     end
 end
-    disp(strcat(SUB{i},'_',ROI,'_R',' Done!'));
+    display(strcat(SUB{i},'_',ROI,'_R',' Done!'));
 end
 
 % close pool
