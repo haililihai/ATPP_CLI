@@ -1,2 +1,3 @@
 /DATA/233/hli/Data/chengdu /DATA/233/hli/Data/chengdu/sub_CD_2.txt /DATA/233/hli/test/STN_parcellation STN 5 
 /DATA/233/hli/Data/chengdu /DATA/233/hli/Data/chengdu/sub_CD_2.txt /DATA/233/hli/test/V1_parcellation V1 6 
+/DATA/233/hli/Data/chengdu /DATA/233/hli/Data/chengdu/sub_CD_2.txt /DATA/233/hli/test/MFG_parcellation MFG 6 

@@ -21,6 +21,7 @@ shift
 MAX_CL_NUM=$1
 
 # fetch the variables
+set -o allexport
 source ${CONFIG}
 
 # show header info

@@ -21,7 +21,6 @@ LEFT=$1
 shift
 RIGHT=$1
 
-source ${PIPELINE}/config.sh
 
 ${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${PIPELINE}');addpath('${SPM}');addpath('${NIFTI}');ROI_registration_spm('${WD}','${ROI}','${SUB_LIST}',${POOLSIZE},'${TEMPLATE}',${LEFT},${RIGHT});exit"
 

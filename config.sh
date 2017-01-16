@@ -10,7 +10,7 @@
 #===============================================================================
 
 # pipeline directory
-PIPELINE=/DATA/233/hli/ATPP_CLI_Dev
+PIPELINE=/DATA/233/hli/ATPP_V2.0/ATPP_CLI
 
 # ROI directory which contains ROI files, e.g., Amyg_L.nii
 ROI_DIR=/DATA/233/hli/test/ROI
@@ -24,7 +24,7 @@ POOLSIZE=7
 
 # switches for each step,
 # a step will NOT run if its number is NOT in the following array
-SWITCH=(12)
+SWITCH=(0)
 
 # switch for processing left hemisphere, 1--yes, 0--no
 LEFT=1

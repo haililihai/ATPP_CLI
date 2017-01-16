@@ -90,7 +90,7 @@ fi
 # Global configuration file
 # Before running the pipeline, you NEED to modify parameters in the file.
 #==============================================================================
-
+set -o allexport
 if [ -f "./config.sh" ]; then
 	source ./config.sh
 else
