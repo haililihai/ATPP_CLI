@@ -27,11 +27,11 @@ ${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${PIPELINE}');addpath('${SPM
 
 for sub in `cat ${SUB_LIST}`
 do
-	if [ "${LEFT}" == "1" ]; then
+	if [ "${LEFT}" = "1" ]; then
 		mv ${WD}/${sub}/w${ROI}_L.nii ${WD}/${sub}/${sub}_${ROI}_L_DTI.nii
 		gzip ${WD}/${sub}/${sub}_${ROI}_L_DTI.nii
 	fi
-	if [ "${RIGHT}" == "1" ]; then
+	if [ "${RIGHT}" = "1" ]; then
 		mv ${WD}/${sub}/w${ROI}_R.nii ${WD}/${sub}/${sub}_${ROI}_R_DTI.nii
         gzip ${WD}/${sub}/${sub}_${ROI}_R_DTI.nii
 	fi

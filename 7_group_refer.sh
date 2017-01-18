@@ -24,15 +24,15 @@ shift
 RIGHT=$1
 
 
-if [ "${LEFT}" == "1" ] && [ "${RIGHT}" == "0" ]
+if [ "${LEFT}" = "1" ] && [ "${RIGHT}" = "0" ]
 then
 	${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${PIPELINE}');addpath('${NIFTI}');group_refer_xmm('${WD}','${ROI}','${SUB_LIST}',${MAX_CL_NUM},'${METHOD}',${VOX_SIZE},${GROUP_THRES},1);exit" &
 	wait
-elif [ "${LEFT}" == "0" ] && [ "${RIGHT}" == "1" ]
+elif [ "${LEFT}" = "0" ] && [ "${RIGHT}" = "1" ]
 then
 	${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${PIPELINE}');addpath('${NIFTI}');group_refer_xmm('${WD}','${ROI}','${SUB_LIST}',${MAX_CL_NUM},'${METHOD}',${VOX_SIZE},${GROUP_THRES},0);exit" &
 	wait
-elif [ "${LEFT}" == "1" ] && [  "${RIGHT}" == "1" ]
+elif [ "${LEFT}" = "1" ] && [  "${RIGHT}" = "1" ]
 then
 	${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${PIPELINE}');addpath('${NIFTI}');group_refer_xmm('${WD}','${ROI}','${SUB_LIST}',${MAX_CL_NUM},'${METHOD}',${VOX_SIZE},${GROUP_THRES},1);exit" &
 	${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${PIPELINE}');addpath('${NIFTI}');group_refer_xmm('${WD}','${ROI}','${SUB_LIST}',${MAX_CL_NUM},'${METHOD}',${VOX_SIZE},${GROUP_THRES},0);exit" &
