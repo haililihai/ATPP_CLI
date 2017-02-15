@@ -4,20 +4,24 @@ function ROI_registration_spm(WD,ROI,SUB_LIST,POOLSIZE,TEMPLATE,LEFT,RIGHT)
 %-----------------------------------------------------------------------
 
 SUB = textread(SUB_LIST,'%s');
-ROI_L=[WD,'/ROI/',ROI,'_L.nii'];
-ROI_R=[WD,'/ROI/',ROI,'_R.nii'];
 
 % make ROIs be proper datatype, default double
-roi_l=load_untouch_nii(ROI_L);
-roi_l.hdr.dime.datatype=64;
-roi_l.hdr.dime.bitpix=64;
-roi_l.img=double(roi_l.img);
-save_untouch_nii(roi_l,ROI_L);
-roi_r=load_untouch_nii(ROI_R);
-roi_r.hdr.dime.datatype=64;
-roi_r.hdr.dime.bitpix=64;
-roi_r.img=double(roi_r.img);
-save_untouch_nii(roi_r,ROI_R);
+if LEFT == 1
+    ROI_L=[WD,'/ROI/',ROI,'_L.nii'];
+    roi_l=load_untouch_nii(ROI_L);
+    roi_l.hdr.dime.datatype=64;
+    roi_l.hdr.dime.bitpix=64;
+    roi_l.img=double(roi_l.img);
+    save_untouch_nii(roi_l,ROI_L);
+end
+if RIGHT == 1
+    ROI_R=[WD,'/ROI/',ROI,'_R.nii'];
+    roi_r=load_untouch_nii(ROI_R);
+    roi_r.hdr.dime.datatype=64;
+    roi_r.hdr.dime.bitpix=64;
+    roi_r.img=double(roi_r.img);
+    save_untouch_nii(roi_r,ROI_R);
+end
 
 
 % Parallel Computing Toolbox settings
