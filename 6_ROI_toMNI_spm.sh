@@ -30,16 +30,15 @@ ${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${PIPELINE}');addpath('${SPM
 
 for sub in `cat ${SUB_LIST}`
 do
-	mkdir -p ${WD}/${sub}/${sub}_${ROI}_L_${METHOD}/${VOX_SIZE}mm
-	mkdir -p ${WD}/${sub}/${sub}_${ROI}_R_${METHOD}/${VOX_SIZE}mm
 	for num in $(seq 2 ${MAX_CL_NUM})
 	do
 		if [ "${LEFT}" = "1" ]; then
-
+	        mkdir -p ${WD}/${sub}/${sub}_${ROI}_L_${METHOD}/${VOX_SIZE}mm
 			mv ${WD}/${sub}/${sub}_${ROI}_L_${METHOD}/w${ROI}_L_${num}.nii ${WD}/${sub}/${sub}_${ROI}_L_${METHOD}/${VOX_SIZE}mm/${VOX_SIZE}mm_${ROI}_L_${num}_MNI.nii
 			gzip ${WD}/${sub}/${sub}_${ROI}_L_${METHOD}/${VOX_SIZE}mm/${VOX_SIZE}mm_${ROI}_L_${num}_MNI.nii
 		fi
 		if [ "${RIGHT}" = "1" ]; then
+	        mkdir -p ${WD}/${sub}/${sub}_${ROI}_R_${METHOD}/${VOX_SIZE}mm
 			mv ${WD}/${sub}/${sub}_${ROI}_R_${METHOD}/w${ROI}_R_${num}.nii ${WD}/${sub}/${sub}_${ROI}_R_${METHOD}/${VOX_SIZE}mm/${VOX_SIZE}mm_${ROI}_R_${num}_MNI.nii
 			gzip ${WD}/${sub}/${sub}_${ROI}_R_${METHOD}/${VOX_SIZE}mm/${VOX_SIZE}mm_${ROI}_R_${num}_MNI.nii
 		fi
