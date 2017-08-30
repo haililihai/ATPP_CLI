@@ -3,9 +3,11 @@ function [nmi,vi]=v_nmi(x,y)
 
 if size(x,1)>1
     x=reshape(x,1,length(x(:)));
+    x=x(~isnan(x));
 end
 if size(y,1)>1
     y=reshape(y,1,length(y(:)));
+    y=y(~isnan(x));
 end
 
 % entropy of x and y
