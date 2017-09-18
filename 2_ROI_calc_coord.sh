@@ -17,4 +17,4 @@ LEFT=$1
 shift
 RIGHT=$1
 
-${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${PIPELINE}');addpath('${NIFTI}');ROI_calc_coord('${WD}','${ROI}','${SUB_LIST}','${POOLSIZE}',${LEFT},${RIGHT});exit"
+${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${PIPELINE}');addpath('${NIFTI}');ROI_calc_coord('${WD}','${ROI}','${SUB_LIST}',${POOLSIZE},${LEFT},${RIGHT});exit"
