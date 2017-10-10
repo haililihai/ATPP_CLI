@@ -54,7 +54,7 @@ fi
 if [[ ${SWITCH[@]/_1_/} != ${SWITCH[@]} ]]; then
 echo "$(date +%T)  ========= 1_ROI_registration_spm start! =========" |tee -a ${WD}/log/progress_check.txt
 T=$(date +%s)
-bash ${PIPELINE}/1_ROI_registration_spm.sh ${PIPELINE} ${WD} ${ROI} ${SUB_LIST} ${POOLSIZE} ${SPM} ${NIFTI} ${TEMPLATE}  ${LEFT} ${RIGHT}
+bash ${PIPELINE}/1_ROI_registration_spm.sh ${PIPELINE} ${WD} ${ROI} ${SUB_LIST} ${POOLSIZE} ${SPM} ${NIFTI} ${TEMPLATE} ${LEFT} ${RIGHT}
 T=$(($(date +%s)-T))
 echo "$(date +%T)  ========= 1_ROI_registration_spm done! =========" |tee -a ${WD}/log/progress_check.txt
 printf "Time elapsed: %02d:%02d:%02d:%02d\n\n" "$((T/86400))" "$((T/3600%24))" "$((T/60%60))" "$((T%60))" |tee -a ${WD}/log/progress_check.txt
