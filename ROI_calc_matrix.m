@@ -32,7 +32,17 @@ else
 end
 
 parfor i = 1:length(SUB)
+    subCreateMatrix(PWD,SUB,ROI,LEFT,RIGHT,threshold,resampleflag,NewVoxSize,method)
+end
 
+% close pool
+if exist('parpool','builtin')
+	delete(p);
+else
+	matlabpool close;
+end
+
+function subCreateMatrix(PWD,SUB,ROI,LEFT,RIGHT,threshold,resampleflag,NewVoxSize,method)
 	if LEFT == 1
 	coord_L = load(strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_L_coord.txt'));
 	imgfolder_L = strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_L_probtrackx');
@@ -48,12 +58,3 @@ parfor i = 1:length(SUB)
 	if ~exist(outfolder_R,'dir') mkdir(outfolder_R);end
 	f_Create_Matrix_v3(imgfolder_R,outfolder_R,coord_R,threshold,resampflag,NewVoxSize,method);
 	end
-
-end
-
-% close pool
-if exist('parpool','builtin')
-	delete(p);
-else
-	matlabpool close;
-end
