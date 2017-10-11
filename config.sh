@@ -24,7 +24,7 @@ POOLSIZE=7
 
 # switches for each step,
 # a step will NOT run if its number is NOT in the following array
-SWITCH=(0)
+SWITCH=()
 
 # switch for processing left hemisphere, 1--yes, 0--no
 LEFT=1
