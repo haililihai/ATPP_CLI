@@ -16,7 +16,7 @@ method = 1;
 % modify temporary dir
 temp_dir=tempname();
 mkdir(temp_dir);
-if exist('parcluster','builtin')
+if exist('parcluster')
 	pc=parcluster('local');
 	pc.JobStorageLocation=temp_dir;
 else
@@ -25,36 +25,36 @@ else
 end
 
 % open pool
-if exist('parpool','builtin')
+if exist('parpool')
 	p=parpool('local',POOLSIZE);
 else
 	matlabpool('local',POOLSIZE);
 end
 
 parfor i = 1:length(SUB)
-    subCreateMatrix(PWD,SUB,ROI,LEFT,RIGHT,threshold,resampleflag,NewVoxSize,method)
+    subCreateMatrix(PWD,SUB{i},ROI,LEFT,RIGHT,threshold,resampflag,NewVoxSize,method)
 end
 
 % close pool
-if exist('parpool','builtin')
+if exist('parpool')
 	delete(p);
 else
 	matlabpool close;
 end
 
-function subCreateMatrix(PWD,SUB,ROI,LEFT,RIGHT,threshold,resampleflag,NewVoxSize,method)
+function subCreateMatrix(PWD,SUBi,ROI,LEFT,RIGHT,threshold,resampflag,NewVoxSize,method)
 	if LEFT == 1
-	coord_L = load(strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_L_coord.txt'));
-	imgfolder_L = strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_L_probtrackx');
-	outfolder_L = strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_L_matrix/');
+	coord_L = load(strcat(PWD,'/',SUBi,'/',SUBi,'_',ROI,'_L_coord.txt'));
+	imgfolder_L = strcat(PWD,'/',SUBi,'/',SUBi,'_',ROI,'_L_probtrackx');
+	outfolder_L = strcat(PWD,'/',SUBi,'/',SUBi,'_',ROI,'_L_matrix/');
 	if ~exist(outfolder_L,'dir') mkdir(outfolder_L);end
  	f_Create_Matrix_v3(imgfolder_L,outfolder_L,coord_L,threshold,resampflag,NewVoxSize,method);
 	end
 
 	if RIGHT == 1
-	coord_R = load(strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_R_coord.txt'));
-	imgfolder_R = strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_R_probtrackx');
-	outfolder_R = strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_R_matrix/');
+	coord_R = load(strcat(PWD,'/',SUBi,'/',SUBi,'_',ROI,'_R_coord.txt'));
+	imgfolder_R = strcat(PWD,'/',SUBi,'/',SUBi,'_',ROI,'_R_probtrackx');
+	outfolder_R = strcat(PWD,'/',SUBi,'/',SUBi,'_',ROI,'_R_matrix/');
 	if ~exist(outfolder_R,'dir') mkdir(outfolder_R);end
 	f_Create_Matrix_v3(imgfolder_R,outfolder_R,coord_R,threshold,resampflag,NewVoxSize,method);
 	end
