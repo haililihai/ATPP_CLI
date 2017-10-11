@@ -95,7 +95,7 @@ fi
 if [[ ${SWITCH[@]/_5_/} != ${SWITCH[@]} ]]; then
 echo "$(date +%T)  =========== 5_ROI_parcellation start! ===========" |tee -a ${WD}/log/progress_check.txt
 T="$(date +%s)"
-bash ${PIPELINE}/5_ROI_parcellation.sh ${PIPELINE} ${WD} ${ROI} ${SUB_LIST} ${MAX_CL_NUM} ${POOLSIZE} ${METHOD} ${LEFT} ${RIGHT}
+bash ${PIPELINE}/5_ROI_parcellation.sh ${PIPELINE} ${WD} ${ROI} ${SUB_LIST} ${MAX_CL_NUM} ${POOLSIZE} ${NIFTI} ${METHOD} ${LEFT} ${RIGHT}
 T="$(($(date +%s)-T))"
 echo "$(date +%T)  =========== 5_ROI_parcellation done! ===========" |tee -a ${WD}/log/progress_check.txt
 printf "Time elapsed: %02d:%02d:%02d:%02d\n\n" "$((T/86400))" "$((T/3600%24))" "$((T/60%60))" "$((T%60))" |tee -a ${WD}/log/progress_check.txt
