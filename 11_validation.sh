@@ -15,6 +15,8 @@ VOX_SIZE=$1
 shift
 MAX_CL_NUM=$1
 shift
+NIFTI=$1
+shift
 N_ITER=$1
 shift
 POOLSIZE=$1
@@ -42,5 +44,5 @@ shift
 tpd=$1
 
 
-${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${pipeline}');validation('${WD}','${ROI}','${SUB}','${METHOD}',${VOX_SIZE},${MAX_CL_NUM},${N_ITER},${POOLSIZE},${GROUP_THRES},${MPM_THRES},${LEFT},${RIGHT},${split_half},${pairwise},${leave_one_out},${cont},${hi_vi},${silhouette},${tpd});exit" 
+${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${pipeline}');addpath('${NIFTI}');validation('${WD}','${ROI}','${SUB}','${METHOD}',${VOX_SIZE},${MAX_CL_NUM},${N_ITER},${POOLSIZE},${GROUP_THRES},${MPM_THRES},${LEFT},${RIGHT},${split_half},${pairwise},${leave_one_out},${cont},${hi_vi},${silhouette},${tpd});exit" 
 

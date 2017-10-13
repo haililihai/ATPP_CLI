@@ -13,6 +13,8 @@ VOX_SIZE=$1
 shift
 MAX_CL_NUM=$1
 shift
+NIFTI=$1
+shift
 LEFT=$1
 shift
 RIGHT=$1
@@ -32,4 +34,4 @@ shift
 tpd=$1
 
 
-${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${pipeline}');addpath('${pipeline}/export_fig');indices_plot('${WD}','${ROI}','${SUB_LIST}',${VOX_SIZE},${MAX_CL_NUM},${LEFT},${RIGHT},${split_half},${pairwise},${leave_one_out},${cont},${hi_vi},${silhouette},${tpd});exit"
+${COMMAND_MATLAB} -nodisplay -nosplash -r "addpath('${pipeline}');addpath('${pipeline}/export_fig');addpath('${NIFTI}');indices_plot('${WD}','${ROI}','${SUB_LIST}',${VOX_SIZE},${MAX_CL_NUM},${LEFT},${RIGHT},${split_half},${pairwise},${leave_one_out},${cont},${hi_vi},${silhouette},${tpd});exit"
