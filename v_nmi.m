@@ -7,7 +7,7 @@ if size(x,1)>1
 end
 if size(y,1)>1
     y=reshape(y,1,length(y(:)));
-    y=y(~isnan(x));
+    y=y(~isnan(y));
 end
 
 % entropy of x and y
