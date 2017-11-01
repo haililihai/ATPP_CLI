@@ -55,13 +55,15 @@ parfor CL_NUM=2:MAX_CL_NUM
     disp(strcat(ROI,'_',LR,'_cluster_',num2str(CL_NUM),' processing...'));
     REFER = strcat(PWD,'/group_',num2str(length(SUB)),'_',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_',num2str(GROUP_THRES),'_group.nii.gz');
     vnii_stand = load_untouch_nii(REFER); 
-    standard_cluster= vnii_stand.img; 
+    standard_cluster= vnii_stand.img;
+    standard_cluster(isnan(standard_cluster))=0;
     sub_num=length(SUB);
 
     for i=1:sub_num
         %if ~exist(strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_',LR,'_',METHOD,'/',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_MNI_relabel_group.nii.gz'),'file')
             vnii=load_untouch_nii(strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_',LR,'_',METHOD,'/',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_MNI.nii.gz')); 
-            tha_seg_result= vnii.img;   
+            tha_seg_result= vnii.img;
+	    tha_seg_result(isnan(tha_seg_result))=0;
             tmp_overlay=zeros(CL_NUM,CL_NUM);
 
             for ki=1:CL_NUM
