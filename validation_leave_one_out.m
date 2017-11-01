@@ -16,7 +16,8 @@ end
 GROUP_THRES=GROUP_THRES*100;
 MASK_FILE=strcat(PWD,'/group_',num2str(sub_num),'_',num2str(VOX_SIZE),'mm/',ROI,'_',LR,'_roimask_thr',num2str(GROUP_THRES),'.nii.gz');
 MASK_NII=load_untouch_nii(MASK_FILE);
-MASK=double(MASK_NII.img); 
+MASK=double(MASK_NII.img);
+MASK(isnan(MASK))=0;
 
 cv=zeros(sub_num,MAX_CL_NUM);
 dice=zeros(sub_num,MAX_CL_NUM);
@@ -50,6 +51,7 @@ parfor ti=1:sub_num
         vnii_ref_file=strcat(PWD,'/',sub{ti},'/',sub{ti},'_',ROI,'_',LR,'_',METHOD,'/',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(kc),'_MNI_relabel_group.nii.gz');
         vnii_ref=load_untouch_nii(vnii_ref_file);
         mpm_cluster1=double(vnii_ref.img);
+        mpm_cluster1(isnan(mpm_cluster1))=0;
         mpm_cluster2=cluster_mpm_validation(PWD,ROI,sub1,METHOD,VOX_SIZE,kc,MPM_THRES,LorR);
         mpm_cluster1=mpm_cluster1.*MASK;
         mpm_cluster2=mpm_cluster2.*MASK;
