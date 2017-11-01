@@ -21,9 +21,11 @@ function validation_group_hi_vi(PWD,ROI,SUB_LIST,VOX_SIZE,MAX_CL_NUM,MPM_THRES,L
         mpm_file1=strcat(PWD,'/MPM_',num2str(sub_num),'_',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(kc-1),'_MPM_thr',num2str(MPM_THRES*100),'_group.nii.gz');
         mpm1=load_untouch_nii(mpm_file1);
         mpmimg1=mpm1.img;
+        mpmimg1(isnan(mpmimg1))=0;
         mpm_file2=strcat(PWD,'/MPM_',num2str(sub_num),'_',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(kc),'_MPM_thr',num2str(MPM_THRES*100),'_group.nii.gz');
         mpm2=load_untouch_nii(mpm_file2);
         mpmimg2=mpm2.img;
+        mpmimg2(isnan(mpmimg2))=0;
 
         xmatrix = zeros(kc,kc-1);
         xi = zeros(kc,1);
