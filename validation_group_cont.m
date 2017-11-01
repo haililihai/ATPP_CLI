@@ -21,6 +21,7 @@ function validation_group_cont(PWD,ROI,SUB_LIST,VOX_SIZE,MAX_CL_NUM,MPM_THRES,Lo
         mpm_file=strcat(PWD,'/MPM_',num2str(sub_num),'_',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(kc),'_MPM_thr',num2str(MPM_THRES*100),'_group.nii.gz');
         mpm=load_untouch_nii(mpm_file);
         tempimg=double(mpm.img);
+        tempimg(isnan(tempimg))=0;
         cont=cell(kc,1);
         sum=0;
         for i=1:kc
