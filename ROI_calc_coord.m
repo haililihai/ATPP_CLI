@@ -30,6 +30,7 @@ parfor i = 1:length(SUB);
 
 	if LEFT == 1
 	roi_l = load_untouch_nii(strcat(WD,'/',SUB{i},'/',SUB{i},'_',ROI,'_L_DTI.nii.gz'));
+	roi_l.img(isnan(roi_l.img))=0;
 	[nxl,nyl,nzl] = size(roi_l.img);
 	fid_l = fopen(strcat(WD,'/',SUB{i},'/',SUB{i},'_',ROI,'_L_coord.txt'),'w');
 	for zl = 1:nzl;
@@ -43,6 +44,7 @@ parfor i = 1:length(SUB);
 	
 	if RIGHT == 1
 	roi_r = load_untouch_nii(strcat(WD,'/',SUB{i},'/',SUB{i},'_',ROI,'_R_DTI.nii.gz'));
+	roi_r.img(isnan(roi_r.img))=0;
 	[nxr,nyr,nzr] = size(roi_r.img);
 	fid_r = fopen(strcat(WD,'/',SUB{i},'/',SUB{i},'_',ROI,'_R_coord.txt'),'w');
 	for zr = 1:nzr;
