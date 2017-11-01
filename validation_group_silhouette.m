@@ -22,6 +22,7 @@ function validation_group_silhouette(PWD,ROI,SUB_LIST,VOX_SIZE,MAX_CL_NUM,MPM_TH
         mpm_file=strcat(PWD,'/MPM_',num2str(sub_num),'_',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(kc),'_MPM_thr',num2str(MPM_THRES*100),'_group.nii.gz');
         mpm=load_untouch_nii(mpm_file);
         tempimg=mpm.img;
+        tempimg(isnan(tempimg))=0;
         [xx,yy,zz]=size(tempimg);
         data=zeros(length(find(tempimg~=0 & ~isnan(tempimg))),4);
         n=1;
