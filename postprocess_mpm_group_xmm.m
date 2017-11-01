@@ -30,6 +30,7 @@ function postprocess_mpm(PWD,ROI,SUB,MAX_CL_NUM,MPM_THRES,VOX_SIZE,LorR)
 
             info = load_untouch_nii(strcat(path,filename));
             img = info.img;
+	    img(isnan(img))=0;
             [m n p] = size(img);
             coordinates = zeros(0,0);
             z = 1;
