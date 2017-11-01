@@ -16,7 +16,8 @@ end
 GROUP_THRES=GROUP_THRES*100;
 MASK_FILE=strcat(PWD,'/group_',num2str(sub_num),'_',num2str(VOX_SIZE),'mm/',ROI,'_',LR,'_roimask_thr',num2str(GROUP_THRES),'.nii.gz');
 MASK_NII=load_untouch_nii(MASK_FILE);
-MASK=double(MASK_NII.img); 
+MASK=double(MASK_NII.img);
+MASK(isnan(MASK))=0;
 
 % open pool
 if exist('parpool')
@@ -40,6 +41,7 @@ parfor ti=1:sub_num
 
         nii_file=strcat(PWD,'/',sub{ti},'/',sub{ti},'_',ROI,'_',LR,'_',METHOD,'/',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(kc),'_MNI_relabel_group.nii.gz');
         nii=load_untouch_nii(nii_file);
+        nii.img(isnan(nii.img))=0;
         nii.img=double(nii.img).*MASK;
         tempimg=double(nii.img);
         cont=cell(kc,1);
