@@ -16,7 +16,8 @@ end
 GROUP_THRES=GROUP_THRES*100;
 MASK_FILE=strcat(PWD,'/group_',num2str(sub_num),'_',num2str(VOX_SIZE),'mm/',ROI,'_',LR,'_roimask_thr',num2str(GROUP_THRES),'.nii.gz');
 MASK_NII=load_untouch_nii(MASK_FILE);
-MASK=double(MASK_NII.img); 
+MASK=double(MASK_NII.img);
+MASK(isnan(MASK))=0;
 
 % open pool
 if exist('parpool')
@@ -45,6 +46,7 @@ parfor kc=2:MAX_CL_NUM
         vnii_ref_file=strcat(PWD,'/',sub{ti},'/',sub{ti},'_',ROI,'_',LR,'_',METHOD,'/',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(kc),'_MNI_relabel_group.nii.gz');
         vnii_ref=load_untouch_nii(vnii_ref_file);
         mpm_cluster1=double(vnii_ref.img);
+        mpm_cluster1(isnan(mpm_cluster1))=0;
         mpm_cluster1=mpm_cluster1.*MASK;
 
         for tn=ti+1:sub_num
@@ -53,6 +55,7 @@ parfor kc=2:MAX_CL_NUM
             vnii_ref1_file=strcat(PWD,'/',sub{tn},'/',sub{tn},'_',ROI,'_',LR,'_',METHOD,'/',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(kc),'_MNI_relabel_group.nii.gz');
             vnii_ref1=load_untouch_nii(vnii_ref1_file);
             mpm_cluster2=double(vnii_ref1.img);
+            mpm_cluster2(isnan(mpm_cluster2))=0;
             mpm_cluster2=mpm_cluster2.*MASK;
 
             %compute dice coefficent
