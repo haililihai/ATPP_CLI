@@ -9,8 +9,10 @@ for CL_NUM=2:MAX_CL_NUM
     %if ~exist(strcat(PWD,'/',ROI,'/','group_',num2str(num),'_',num2str(VOX),'mm/',num2str(VOX),'mm_',ROI,'_R_',num2str(CL_NUM),'_',num2str(THRES*100),'_group.nii.gz'),'file')
         nii_L=load_untouch_nii(strcat(PWD,'/group_',num2str(num),'_',num2str(VOX),'mm/',num2str(VOX),'mm_',ROI,'_L_',num2str(CL_NUM),'_',num2str(THRES*100),'_group.nii.gz'));
         img_L= nii_L.img;
+        img_L(isnan(img_L))=0;
         nii_R=load_untouch_nii(strcat(PWD,'/group_',num2str(num),'_',num2str(VOX),'mm/',num2str(VOX),'mm_',ROI,'_R_',num2str(CL_NUM),'_',num2str(THRES*100),'_group.nii.gz'));
         img_R= nii_R.img;
+        img_R(isnan(img_R))=0;
         [xr,yr,zr]=size(img_R);
         img_R_mirror=img_R;
         img_R_mirror(:,:,:)=0;
