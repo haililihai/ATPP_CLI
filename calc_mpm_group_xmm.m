@@ -64,8 +64,10 @@ parfor CL_NUM=2:MAX_CL_NUM
     for i=1:sub_num
         sub_file=strcat(PWD,'/',SUB{i},'/',SUB{i},'_',ROI,'_',LR,'_',METHOD,'/',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_',LR,'_',num2str(CL_NUM),'_MNI_relabel_group.nii.gz');
         vnii=load_untouch_nii(sub_file);
-        tha_seg_result= vnii.img;   
+        tha_seg_result= vnii.img;
+        tha_seg_result(isnan(tha_seg_result))=0;
         dataimg = vnii.img;
+        dataimg(isnan(dataimg))=0;
         dataimg(dataimg>0) = 1;
         sumimg = sumimg + dataimg;
 
