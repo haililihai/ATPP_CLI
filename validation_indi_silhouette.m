@@ -41,6 +41,7 @@ parfor ti=1:sub_num
         nii_file=strcat(PWD,'/',sub{ti},'/',sub{ti},'_',ROI,'_',LR,'_',METHOD,'/',ROI,'_',LR,'_',num2str(kc),'.nii');
         nii=load_untouch_nii(nii_file);
         tempimg=double(nii.img);
+        tempimg(isnan(tempimg))=0;
         [xx,yy,zz]=size(tempimg);    
         label=zeros(length(con_matrix.xyz),1);
         for n=1:length(con_matrix.xyz)
