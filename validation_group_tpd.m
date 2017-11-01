@@ -14,9 +14,11 @@ function validation_group_tpd(PWD,ROI,SUB_LIST,METHOD,VOX_SIZE,MAX_CL_NUM,MPM_TH
         mpm_file1=strcat(PWD,'/MPM_',num2str(sub_num),'_',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_L_',num2str(kc),'_MPM_thr',num2str(MPM_THRES*100),'_group.nii.gz');
         mpm1=load_untouch_nii(mpm_file1);
         img1=mpm1.img;
+        img1(isnan(img1))=0;
         mpm_file2=strcat(PWD,'/MPM_',num2str(sub_num),'_',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_R_',num2str(kc),'_MPM_thr',num2str(MPM_THRES*100),'_group.nii.gz');
         mpm2=load_untouch_nii(mpm_file2);
         img2=mpm2.img;
+        img2(isnan(img2))=0;
 
         se=strel(ones(3,3,3));
 
