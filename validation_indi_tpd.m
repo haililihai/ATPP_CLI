@@ -11,11 +11,13 @@ GROUP_THRES=GROUP_THRES*100;
 
 MASK_L_FILE=strcat(PWD,'/group_',num2str(sub_num),'_',num2str(VOX_SIZE),'mm/',ROI,'_L_roimask_thr',num2str(GROUP_THRES),'.nii.gz');
 MASK_L_NII=load_untouch_nii(MASK_L_FILE);
-MASK_L=double(MASK_L_NII.img); 
+MASK_L=double(MASK_L_NII.img);
+MASK_L(isnan(MASK_L))=0;
 
 MASK_R_FILE=strcat(PWD,'/group_',num2str(sub_num),'_',num2str(VOX_SIZE),'mm/',ROI,'_R_roimask_thr',num2str(GROUP_THRES),'.nii.gz');
 MASK_R_NII=load_untouch_nii(MASK_R_FILE);
-MASK_R=double(MASK_R_NII.img); 
+MASK_R=double(MASK_R_NII.img);
+MASK_R(isnan(MASK_R))=0;
 
 % open pool
 if exist('parpool')
@@ -39,9 +41,11 @@ parfor ti=1:sub_num
         mpm_file1=strcat(PWD,'/',sub{ti},'/',sub{ti},'_',ROI,'_L_',METHOD,'/',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_L_',num2str(kc),'_MNI_relabel_group.nii.gz');
         mpm1=load_untouch_nii(mpm_file1);
         img1=double(mpm1.img);
+        img1(isnan(img1))=0;
         mpm_file2=strcat(PWD,'/',sub{ti},'/',sub{ti},'_',ROI,'_R_',METHOD,'/',num2str(VOX_SIZE),'mm/',num2str(VOX_SIZE),'mm_',ROI,'_R_',num2str(kc),'_MNI_relabel_group.nii.gz');
         mpm2=load_untouch_nii(mpm_file2);
         img2=double(mpm2.img);
+        img2(isnan(img2))=0;
         img1=img1.*MASK_L;
         img2=img2.*MASK_R;
 
