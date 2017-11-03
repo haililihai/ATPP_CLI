@@ -23,8 +23,8 @@ function [mpm_cluster]=cluster_mpm_validation(PWD,ROI,SUB,METHOD,VOX_SIZE,kc,MPM
         vnii=load_untouch_nii(sub_file);
         tha_seg_result= vnii.img;
         tha_seg_result(isnan(tha_seg_result))=0;
-        dataimg(isnan(dataimg))=0;
         dataimg=double(vnii.img);
+        dataimg(isnan(dataimg))=0;
         dataimg(dataimg>0)=1;
         sumimg=sumimg+dataimg;
 
