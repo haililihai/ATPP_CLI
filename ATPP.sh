@@ -134,7 +134,7 @@ echo "\
 #$ -o ${LOG_DIR}
 #$ -e ${LOG_DIR}
 
-bash ${PIPELINE}/pipeline.sh ${PIPELINE} ${CONFIG} ${HEADER} ${WD} ${DATA_DIR} ${SUB_LIST} ${ROI} ${MAX_CL_NUM} >${LOG} 2>&1"\
+bash ${PIPELINE}/pipeline.sh ${PIPELINE} ${CONFIG} ${HEADER} ${WD} ${DATA_DIR} ${SUB_LIST} ${ROI} ${MAX_CL_NUM} >& ${LOG}"\
 >${LOG_DIR}/ATPP_${ROI}_qsub.sh
 
 # 3. submit the task
