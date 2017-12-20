@@ -51,6 +51,9 @@ if LEFT == 1
                     index=sc3(k+1,matrix1);
                 case 'kmeans'
                     index=kmeans(matrix,k+1,'Replicates',300);
+                case 'simlr'
+                    addpath('SIMLR');
+                    index=SIMLR_Cluster(k+1,matrix);
 			    otherwise
                     error('Error: Unknown clustering method!');
             end
@@ -90,6 +93,9 @@ if RIGHT == 1
                     index=sc3(k+1,matrix1);
                 case 'kmeans'
                     index=kmeans(matrix,k+1,'Replicates',300);
+                case 'simlr'
+                    addpath('SIMLR');
+                    index=SIMLR_Cluster(k+1,matrix);
 			    otherwise
                     error('Error: Unknown clustering method!');
             end
