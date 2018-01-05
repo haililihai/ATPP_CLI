@@ -24,7 +24,7 @@ POOLSIZE=7
 
 # switches for each step,
 # a step will NOT run if its number is NOT in the following array
-SWITCH=()
+SWITCH=(0 1 2 3)
 
 # switch for processing left hemisphere, 1--yes, 0--no
 LEFT=1
@@ -66,7 +66,7 @@ VAL_THRES=10
 # 4_ROI_calc_matrix, downsampling, new voxel size, e.g. 5*5*5. default 5
 DOWN_SIZE=5
 
-# 5_ROI_parcellation, clustering method, e.g. spectral clustering, default sc
+# 5_ROI_parcellation, clustering method, e.g. spectral clustering, default sc (available methods: kmeans, sc, simlr)
 METHOD=sc
 
 # 6_ROI_toMNI_spm, new voxel size, default 1*1*1
