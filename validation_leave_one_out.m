@@ -58,7 +58,7 @@ parfor ti=1:sub_num
 
 
         %compute dice coefficent
-        temp_dice(kc)=v_dice(mpm_cluster1,mpm_cluster2,kc);
+        temp_dice(kc)=v_dice(mpm_cluster1,mpm_cluster2);
         
         %compute the normalized mutual information and variation of information
         [temp_nminfo(kc),temp_vi(kc)]=v_nmi(mpm_cluster1,mpm_cluster2);

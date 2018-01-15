@@ -59,7 +59,7 @@ parfor kc=2:MAX_CL_NUM
             mpm_cluster2=mpm_cluster2.*MASK;
 
             %compute dice coefficent
-            dice_k(ti,tn)=v_dice(mpm_cluster1,mpm_cluster2,kc);
+            dice_k(ti,tn)=v_dice(mpm_cluster1,mpm_cluster2);
         
             %compute the normalized mutual information and variation of information
             [nminfo_k(ti,tn),vi_k(ti,tn)]=v_nmi(mpm_cluster1,mpm_cluster2);

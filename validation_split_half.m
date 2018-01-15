@@ -76,7 +76,7 @@ parfor ti=1:N_ITER
         mpm_cluster2=mpm_cluster2.*MASK;
         
         %compute dice coefficent
-        temp_dice(kc)=v_dice(mpm_cluster1,mpm_cluster2,kc);
+        temp_dice(kc)=v_dice(mpm_cluster1,mpm_cluster2);
         
         %compute the normalized mutual information and variation of information
         [temp_nmi(kc),temp_vi(kc)]=v_nmi(mpm_cluster1,mpm_cluster2);
